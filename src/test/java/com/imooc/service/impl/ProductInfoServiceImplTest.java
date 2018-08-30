@@ -24,14 +24,14 @@ public class ProductInfoServiceImplTest {
     @Test
     public void save() throws Exception {
         ProductInfo productInfo = new ProductInfo();
-        productInfo.setProductId("123457");
-        productInfo.setProductName("皮皮虾");
+        productInfo.setProductId("232323");
+        productInfo.setProductName("芝士蛋糕");
         productInfo.setProductPrice(new BigDecimal(3.2));
         productInfo.setProductStock(100);
-        productInfo.setProductDescription("很好吃的虾");
+        productInfo.setProductDescription("很好吃芝士蛋糕");
         productInfo.setProductIcon("http://xxxxx.jpg");
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
-        productInfo.setCategoryType(2);
+        productInfo.setCategoryType(4);
 
         ProductInfo result = productInfoService.save(productInfo);
         Assert.assertNotNull(result);
