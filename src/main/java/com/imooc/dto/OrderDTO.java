@@ -55,12 +55,12 @@ public class OrderDTO {
 
     List<OrderDetail> orderDetailList;
 
-    @JsonIgnore
+    @JsonIgnore //加上这个注解避免这个方法生成json数据
     public OrderStatusEnum getOrderStatusEnum() {
         return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
     }
 
-    @JsonIgnore
+    @JsonIgnore //加上这个注解避免这个方法生成json数据
     public PayStatusEnum getPayStatusEnum() {
         return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
     }

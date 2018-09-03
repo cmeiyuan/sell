@@ -146,7 +146,7 @@ public class OrderServiceImpl implements OrderService {
         List<CartDTO> cartDTOList = orderDetailList.stream().map(e ->
                 new CartDTO(e.getProductId(), e.getProductQuantity()))
                 .collect(Collectors.toList());
-        productService.decreaseStock(cartDTOList);
+        productService.increaseStock(cartDTOList);
 
         // TODO 如果已支付，需退款
 

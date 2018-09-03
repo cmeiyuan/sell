@@ -5,6 +5,7 @@ import com.imooc.exception.SellException;
 import com.imooc.utils.ResultVOUtil;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by cmy on 2018/8/30
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class SellExceptionHandler {
 
     @ExceptionHandler(value = SellException.class)
+    @ResponseBody
     public ResultVO handleSellException(SellException e) {
         return ResultVOUtil.error(e.getCode(), e.getMessage());
     }
