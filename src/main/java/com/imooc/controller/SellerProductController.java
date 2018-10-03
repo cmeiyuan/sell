@@ -41,8 +41,8 @@ public class SellerProductController {
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                              @RequestParam(value = "size", defaultValue = "10") Integer size,
                              Map<String, Object> map) {
-        PageRequest pageRequest = new PageRequest(page, size);
-        Page<ProductInfo> productInfoPage = productService.findAll(pageRequest);
+        PageRequest request = new PageRequest(page - 1, size);
+        Page<ProductInfo> productInfoPage = productService.findAll(request);
         map.put("productInfoPage", productInfoPage);
         map.put("currentPage", page);
         map.put("size", size);

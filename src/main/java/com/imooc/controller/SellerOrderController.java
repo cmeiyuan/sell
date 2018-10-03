@@ -1,6 +1,5 @@
 package com.imooc.controller;
 
-import com.imooc.dataobject.OrderDetail;
 import com.imooc.dto.OrderDTO;
 import com.imooc.enums.ResultEnum;
 import com.imooc.service.OrderService;

@@ -10,12 +10,14 @@
                 <tr>
                     <th>订单ID</th>
                     <th>订单总金额</th>
+                    <th>订单状态</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>${orderDTO.getOrderId()}</td>
                     <td>${orderDTO.getOrderAmount()}</td>
+                    <td>${orderDTO.getOrderStatusEnum().message}</td>
                 </tr>
                 </tbody>
             </table>
@@ -48,6 +50,14 @@
 
             </table>
         </div>
+
+        <#if orderDTO.getOrderStatus() == 0>
+            <div class="col-md-12 column">
+                <a href="/seller/order/finish?orderId=${orderDTO.getOrderId()}" type="button" class="btn btn-default btn-primary">完结订单</a>
+                <a href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}" type="button" class="btn btn-default btn-danger">取消订单</a>
+            </div>
+        </#if>
+
     </div>
 </div>
 

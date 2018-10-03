@@ -13,45 +13,47 @@
 
             <#--表格-->
 
-
                 <div class="col-md-12 column">
                     <table class="table table-bordered table-condensed">
 
                         <thead>
                         <tr>
-                            <th>订单ID</th>
-                            <th>姓名</th>
-                            <th>手机号</th>
-                            <th>地址</th>
-                            <th>金额</th>
-                            <th>订单状态</th>
-                            <th>支付方式</th>
-                            <th>支付状态</th>
+                            <th>商吕ID</th>
+                            <th>名称</th>
+                            <th>图片</th>
+                            <th>单价</th>
+                            <th>库存</th>
+                            <th>描述</th>
+                            <th>介绍</th>
+                            <th>类目</th>
                             <th>创建时间</th>
+                            <th>修改时间</th>
                             <th colspan="2">操作</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <#list orderDTOPage.content as orderDTO>
+                        <#list productInfoPage.content as productInfo>
                         <tr>
-                            <td>${orderDTO.orderId}</td>
-                            <td>${orderDTO.buyerName}</td>
-                            <td>${orderDTO.buyerPhone}</td>
-                            <td>${orderDTO.buyerAddress}</td>
-                            <td>${orderDTO.orderAmount}</td>
-                            <td>${orderDTO.getOrderStatusEnum().message}</td>
-                            <td>微信</td>
-                            <td>${orderDTO.getPayStatusEnum().message}</td>
-                            <td>${orderDTO.createTime}</td>
-                            <td><a href="/seller/order/detail?orderId=${orderDTO.orderId}">详情</a></td>
-                            <td>
-                                <#if orderDTO.getOrderStatusEnum().message == "新订单">
-                                    <a href="/seller/order/cancel?orderId=${orderDTO.orderId}">取消</a>
-                                </#if>
-                            </td>
+                            <td>${productInfo.productId}</td>
+                            <td>${productInfo.productName}</td>
+                            <td><img src="${productInfo.productIcon}" width="50" height="50"></td>
+                            <td>${productInfo.productPrice}</td>
+                            <td>${productInfo.productStock}</td>
+                            <td>${productInfo.productDescription}</td>
+                            <td>${productInfo.productDescription}</td>
+                            <td>${productInfo.categoryType}</td>
+                            <td>${productInfo.createTime}</td>
+                            <td>${productInfo.updateTime}</td>
+                            <td><a href="#">修改</a></td>
+                            <#if productInfo.getProductStatusEnum().getMessage() == "在架">
+                                <td><a href="/seller/product/off_sale?productId=${productInfo.productId}">下架</a></td>
+                            <#else >
+                                <td><a href="/seller/product/on_sale?productId=${productInfo.productId}">上架</a></td>
+                            </#if>
                         </tr>
                         </#list>
+
                         </tbody>
 
                     </table>
@@ -64,10 +66,10 @@
                     <#if currentPage == 1>
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
-                        <li><a href="/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
+                        <li><a href="/seller/product/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
                     </#if>
 
-                    <#assign totalPages = orderDTOPage.getTotalPages()>
+                    <#assign totalPages = productInfoPage.getTotalPages()>
                     <#if totalPages lt 10>
                         <#assign maxCount = totalPages>
                     <#else>
@@ -89,14 +91,14 @@
                         <#if currentPage == index>
                             <li class="disabled"><a href="#">${index}</a></li>
                         <#else>
-                            <li><a href="/seller/order/list?page=${index}&size=${size}">${index}</a></li>
+                            <li><a href="/seller/product/list?page=${index}&size=${size}">${index}</a></li>
                         </#if>
                     </#list>
 
-                    <#if currentPage == orderDTOPage.getTotalPages()>
+                    <#if currentPage == productInfoPage.getTotalPages()>
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
-                        <li><a href="/seller/order/list?page=${currentPage + 1}&size=${size}">下一页</a></li>
+                        <li><a href="/seller/product/list?page=${currentPage + 1}&size=${size}">下一页</a></li>
                     </#if>
 
                     </ul>
