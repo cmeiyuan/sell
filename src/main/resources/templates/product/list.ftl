@@ -24,7 +24,6 @@
                             <th>单价</th>
                             <th>库存</th>
                             <th>描述</th>
-                            <th>介绍</th>
                             <th>类目</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
@@ -37,15 +36,14 @@
                         <tr>
                             <td>${productInfo.productId}</td>
                             <td>${productInfo.productName}</td>
-                            <td><img src="${productInfo.productIcon}" width="50" height="50"></td>
+                            <td><img src="${(productInfo.productIcon)!''}" width="80" height="80"></td>
                             <td>${productInfo.productPrice}</td>
                             <td>${productInfo.productStock}</td>
-                            <td>${productInfo.productDescription}</td>
                             <td>${productInfo.productDescription}</td>
                             <td>${productInfo.categoryType}</td>
                             <td>${productInfo.createTime}</td>
                             <td>${productInfo.updateTime}</td>
-                            <td><a href="#">修改</a></td>
+                            <td><a href="/seller/product/index?productId=${productInfo.productId}">修改</a></td>
                             <#if productInfo.getProductStatusEnum().getMessage() == "在架">
                                 <td><a href="/seller/product/off_sale?productId=${productInfo.productId}">下架</a></td>
                             <#else >
